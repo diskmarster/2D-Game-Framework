@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvSoftMandatory2DWorld", "AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld.csproj", "{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandatoryAdvDemo", "MandatoryAdvDemo\MandatoryAdvDemo.csproj", "{ABA0C1B6-8062-41D7-A93A-8ABB103F7827}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA0C1B6-8062-41D7-A93A-8ABB103F7827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA0C1B6-8062-41D7-A93A-8ABB103F7827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA0C1B6-8062-41D7-A93A-8ABB103F7827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA0C1B6-8062-41D7-A93A-8ABB103F7827}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D58D040-0037-4E1A-8B1F-7D91386CE054}
+	EndGlobalSection
+EndGlobal

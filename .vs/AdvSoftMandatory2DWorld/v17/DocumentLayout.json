@@ -1,0 +1,271 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\creature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\creature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\subcreatures\\warrior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\subcreatures\\warrior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABA0C1B6-8062-41D7-A93A-8ABB103F7827}|MandatoryAdvDemo\\MandatoryAdvDemo.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\mandatoryadvdemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABA0C1B6-8062-41D7-A93A-8ABB103F7827}|MandatoryAdvDemo\\MandatoryAdvDemo.csproj|solutionrelative:mandatoryadvdemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\defaultmovementstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\defaultmovementstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\interfaces\\imovementstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\interfaces\\imovementstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\gameturns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\gameturns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\interfaces\\idefendable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\interfaces\\idefendable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\interfaces\\iattackable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\interfaces\\iattackable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\interfaces\\imovable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\interfaces\\imovable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\worldobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\worldobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\attackitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\attackitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\defenceitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\defenceitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|c:\\users\\alex\\source\\repos\\advsoftmandatory2dworld\\advsoftmandatory2dworld\\classes\\subworldobjects\\grass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D0A012B-7E75-4BFF-B25B-0B1BC7247FC4}|AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld.csproj|solutionrelative:advsoftmandatory2dworld\\classes\\subworldobjects\\grass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 17,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\MandatoryAdvDemo\\Program.cs",
+              "RelativeDocumentMoniker": "MandatoryAdvDemo\\Program.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\MandatoryAdvDemo\\Program.cs",
+              "RelativeToolTip": "MandatoryAdvDemo\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T11:57:30.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DefaultMovementStrategy.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\DefaultMovementStrategy.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\DefaultMovementStrategy.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\DefaultMovementStrategy.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\DefaultMovementStrategy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:03:53.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IMovementStrategy.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovementStrategy.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovementStrategy.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovementStrategy.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovementStrategy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:03:11.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IDefendable.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IDefendable.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IDefendable.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IDefendable.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IDefendable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:56:47.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IAttackAble.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IAttackAble.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IAttackAble.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IAttackAble.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IAttackAble.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:56:23.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IMovable.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovable.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovable.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovable.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\Interfaces\\IMovable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:56:04.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Grass.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\SubWorldObjects\\Grass.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\SubWorldObjects\\Grass.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\SubWorldObjects\\Grass.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\SubWorldObjects\\Grass.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:40:38.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GameTurns.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\GameTurns.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\GameTurns.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\GameTurns.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\GameTurns.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T12:12:09.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Warrior.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\SubCreatures\\Warrior.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\SubCreatures\\Warrior.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\SubCreatures\\Warrior.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\SubCreatures\\Warrior.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T11:26:07.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DefenceItem.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\DefenceItem.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\DefenceItem.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\DefenceItem.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\DefenceItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T14:22:19.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AttackItem.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\AttackItem.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\AttackItem.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\AttackItem.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\AttackItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T14:21:53.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "WorldObject.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\WorldObject.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\WorldObject.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\WorldObject.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\WorldObject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T14:11:28.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "World.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\World.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\World.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\World.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\World.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T14:10:47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Creature.cs",
+              "DocumentMoniker": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Creature.cs",
+              "RelativeDocumentMoniker": "AdvSoftMandatory2DWorld\\Classes\\Creature.cs",
+              "ToolTip": "C:\\Users\\Alex\\source\\repos\\AdvSoftMandatory2DWorld\\AdvSoftMandatory2DWorld\\Classes\\Creature.cs",
+              "RelativeToolTip": "AdvSoftMandatory2DWorld\\Classes\\Creature.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwDwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T14:03:25.97Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 214,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

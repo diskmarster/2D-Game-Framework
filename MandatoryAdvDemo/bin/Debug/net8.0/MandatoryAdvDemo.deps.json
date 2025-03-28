@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MandatoryAdvDemo/1.0.0": {
+        "dependencies": {
+          "AdvSoftMandatory2DWorld": "1.0.0"
+        },
+        "runtime": {
+          "MandatoryAdvDemo.dll": {}
+        }
+      },
+      "AdvSoftMandatory2DWorld/1.0.0": {
+        "runtime": {
+          "AdvSoftMandatory2DWorld.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MandatoryAdvDemo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AdvSoftMandatory2DWorld/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

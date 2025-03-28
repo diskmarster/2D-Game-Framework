@@ -1,0 +1,11 @@
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\bin\Debug\net9.0\AdvSoftMandatory2DWorld.deps.json
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\bin\Debug\net9.0\AdvSoftMandatory2DWorld.dll
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\bin\Debug\net9.0\AdvSoftMandatory2DWorld.pdb
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\AdvSoftMandatory2DWorld.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\AdvSoftMandatory2DWorld.AssemblyInfoInputs.cache
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\AdvSoftMandatory2DWorld.AssemblyInfo.cs
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\AdvSoftMandatory2DWorld.csproj.CoreCompileInputs.cache
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\AdvSoftMandatory2DWorld.dll
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\refint\AdvSoftMandatory2DWorld.dll
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\AdvSoftMandatory2DWorld.pdb
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld\obj\Debug\net9.0\ref\AdvSoftMandatory2DWorld.dll
