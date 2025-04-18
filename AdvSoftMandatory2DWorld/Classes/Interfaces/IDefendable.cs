@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdvSoftMandatory2DWorld.Classes.Interfaces
+﻿namespace AdvSoftMandatory2DWorld.Classes.Interfaces
 {
+    /// <summary>
+    /// Interface for entities that can enter a defensive state during their turn.
+    /// </summary>
     public interface IDefendable
     {
+        /// <summary>
+        /// Triggers the entity's defend behavior.
+        /// </summary>
         void Defend();
     }
 }

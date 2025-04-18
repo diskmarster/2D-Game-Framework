@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdvSoftMandatory2DWorld")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+752dbd3d1e6bc7de8c61182b0f671cfb941383cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdvSoftMandatory2DWorld")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdvSoftMandatory2DWorld")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

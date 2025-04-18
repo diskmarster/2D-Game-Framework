@@ -3,31 +3,56 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace AdvSoftMandatory2DWorld.Classes
 {
+    /// <summary>
+    /// Represents a base class for all creatures in the game, providing shared properties and behaviors
+    /// such as movement, attacking, defending, looting, and turn-based actions.
+    /// </summary>
     public abstract class Creature : IMovable, IAttackable, IDefendable
     {
-        private IMovementStrategy _movementStrategy;
+        private ICreatureState _currentState;
+        public IMovementStrategy _movementStrategy;
+        private readonly List<IHitObserver> _observers = new();
+
+        /// <summary>
+        /// The name of the creature.
+        /// </summary>
         public string Name { get; protected set; }
+
+        /// <summary>
+        /// The current hit points of the creature.
+        /// </summary>
         public int HitPoints { get; protected set; }
+
+        /// <summary>
+        /// The current X-coordinate position of the creature.
+        /// </summary>
         public int X { get; set; }
+
+        /// <summary>
+        /// The current Y-coordinate position of the creature.
+        /// </summary>
         public int Y { get; set; }
-        protected List<AttackItem> AttackItems { get; } = new();
-        protected List<DefenceItem> DefenceItems { get; } = new();
-        public CreatureState State { get; internal set; } = CreatureState.WaitingForTurn;
 
-        // States Work in process
-        public enum CreatureState
-        {
-            OutOfCombat,
-            WaitingForTurn,
-            IsTurn,
-            StunnedOrSleep,
-            HasMoved,
-            Dead
-        }
+        /// <summary>
+        /// A list of attack items (weapons or spells) that the creature has.
+        /// </summary>
+        public List<IAttackItem> AttackItems { get; } = new();
 
+        /// <summary>
+        /// A list of defense items (shields, armor) that the creature has.
+        /// </summary>
+        public List<DefenceItem> DefenceItems { get; } = new();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Creature"/> class.
+        /// </summary>
+        /// <param name="name">Name of the creature.</param>
+        /// <param name="hitPoints">Starting health points.</param>
+        /// <param name="x">X-position in the world.</param>
+        /// <param name="y">Y-position in the world.</param>
+        /// <param name="movementStrategy">Movement strategy to control movement logic.</param>
         protected Creature(string name, int hitPoints, int x, int y, IMovementStrategy movementStrategy)
         {
             Name = name;
@@ -35,233 +60,131 @@ namespace AdvSoftMandatory2DWorld.Classes
             X = x;
             Y = y;
             _movementStrategy = movementStrategy;
+            _currentState = new WaitingForTurnState();
         }
 
+        /// <summary>
+        /// Sets the state of the creature (e.g., IsTurn, HasMoved).
+        /// </summary>
+        /// <param name="newState">The new state to transition to.</param>
+        public void SetState(ICreatureState newState)
+        {
+            Logger.Log($"{Name} transitions to {newState.GetType().Name}.");
+            _currentState = newState;
+        }
+
+        /// <summary>
+        /// Starts the creature's turn.
+        /// </summary>
+        public void StartTurn() => _currentState.StartTurn(this);
+
+        /// <summary>
+        /// Ends the creature's turn.
+        /// </summary>
+        public void EndTurn() => _currentState.EndTurn(this);
+
+        /// <summary>
+        /// Attempts to attack another creature.
+        /// </summary>
+        /// <param name="target">The creature to attack.</param>
+        /// <param name="world">The world where the attack is happening.</param>
+        public void Attack(Creature target, World world) => _currentState.Attack(this, target, world);
+
+        /// <summary>
+        /// Defends this turn, increasing damage resistance temporarily.
+        /// </summary>
+        public void Defend() => _currentState.Defend(this);
+
+        /// <summary>
+        /// Moves the creature to a new position if allowed by the movement strategy.
+        /// </summary>
+        /// <param name="newX">New X-coordinate.</param>
+        /// <param name="newY">New Y-coordinate.</param>
+        /// <param name="world">The game world context.</param>
+        public void Move(int newX, int newY, World world) => _movementStrategy.Move(this, newX, newY, world);
+
+        /// <summary>
+        /// Performs the creature's custom attack logic and returns the calculated damage.
+        /// </summary>
+        /// <returns>The damage dealt by the attack.</returns>
         public abstract int Hit();
 
+        /// <summary>
+        /// Receives incoming damage and reduces hit points, applying defense modifiers.
+        /// </summary>
+        /// <param name="damage">The base damage before mitigation.</param>
         public virtual void ReceiveHit(int damage)
         {
             int reducedDamage = CalculateReducedDamage(damage);
             HitPoints -= reducedDamage;
+
+            NotifyHitObservers(reducedDamage);
             if (HitPoints <= 0)
             {
                 HitPoints = 0;
-                Console.WriteLine($"{Name} has died!");
+                Logger.Log($"{Name} has died!");
             }
         }
 
+        /// <summary>
+        /// Picks up an object from the world, adding it to inventory if applicable.
+        /// </summary>
+        /// <param name="obj">The object to pick up.</param>
         public void Loot(WorldObject obj)
         {
             if (obj is AttackItem attackItem)
             {
                 AttackItems.Add(attackItem);
-                Console.WriteLine($"{Name} has picked up {attackItem.Name}");
+                Logger.Log($"{Name} has picked up {attackItem.Name}");
             }
             else if (obj is DefenceItem defenceItem)
             {
                 DefenceItems.Add(defenceItem);
-                Console.WriteLine($"{Name} has picked up {defenceItem.Name}");
+                Logger.Log($"{Name} has picked up {defenceItem.Name}");
             }
         }
 
+        /// <summary>
+        /// Calculates the amount of damage reduced by defense items.
+        /// </summary>
+        /// <param name="damage">The incoming damage.</param>
+        /// <returns>The reduced damage after applying defense.</returns>
         private int CalculateReducedDamage(int damage)
         {
             int totalReduction = DefenceItems.Sum(d => d.ReduceHitPoint);
             return Math.Max(0, damage - totalReduction);
         }
 
+        /// <summary>
+        /// Logs the creature's current hit points.
+        /// </summary>
         public void PrintStats()
         {
-            Console.WriteLine($"{Name} has {HitPoints} HP");
+            Logger.Log($"{Name} has {HitPoints} HP");
         }
 
-        public void StartTurn()
+        /// <summary>
+        /// Subscribes an observer to be notified when the creature is hit.
+        /// </summary>
+        /// <param name="observer">The observer to subscribe.</param>
+        public void AddObserver(IHitObserver observer) => _observers.Add(observer);
+
+        /// <summary>
+        /// Unsubscribes an observer from hit notifications.
+        /// </summary>
+        /// <param name="observer">The observer to remove.</param>
+        public void RemoveObserver(IHitObserver observer) => _observers.Remove(observer);
+
+        /// <summary>
+        /// Notifies all observers that the creature has taken damage.
+        /// </summary>
+        /// <param name="damage">The amount of damage received.</param>
+        private void NotifyHitObservers(int damage)
         {
-            if (HitPoints <= 0)
+            foreach (var observer in _observers)
             {
-                Console.WriteLine($"{Name} is dead and cannot take their turn!");
-                return;
+                observer.OnHit(this, damage);
             }
-
-            State = CreatureState.IsTurn;
-            Console.WriteLine($"{Name} is taking their turn!");
         }
-
-        public void EndTurn()
-        {
-            State = CreatureState.WaitingForTurn;
-            Console.WriteLine($"{Name} has ended their turn!");
-        }
-
-        public void Move(int newX, int newY, World world)
-        {
-            _movementStrategy.Move(this, newX, newY, world);
-        }
-
-        public void ChangeState(CreatureState newState)
-        {
-            State = newState;
-        }
-
-        public void Defend()
-        {
-            if (State != CreatureState.IsTurn && State != CreatureState.HasMoved)
-            {
-                Console.WriteLine($"{Name} cannot defend right now!");
-                return;
-            }
-            Console.WriteLine($"{Name} takes a defensive stance! Damage reduction increased by 50% this turn.");
-            foreach (var defenseItem in DefenceItems)
-            {
-                defenseItem.ReduceHitPoint = (int)(defenseItem.ReduceHitPoint * 1.5);
-            }
-            EndTurn();
-        }
-
-        public void Attack(Creature target)
-        {
-            if (State != CreatureState.IsTurn && State != CreatureState.HasMoved)
-            {
-                Console.WriteLine($"{Name} cannot attack right now!");
-                return;
-            }
-            int damage = Hit();
-            target.ReceiveHit(damage);
-            Console.WriteLine($"{Name} attacked {target.Name} for {damage} damage!");
-            Console.WriteLine($"{target.Name} has {target.HitPoints} HP left!");
-            EndTurn();
-        }
-
-
-        /* Gammel kode der er blevet refaktoreret
-        // Jeg har tilføjet en check for om newX og newY er udenfor world.MaxX og world.MaxY for at undgå at creature kan bevæge sig udenfor worldet.
-        // Jeg bruger IsPositionOccupied() fra min world class, for at undgå at to creatures kan stå på samme position.
-        // Jeg har også tilføjet en Console.WriteLine for at give besked om at creature ikke kan bevæge sig til den nye position.
-
-        // Jeg laver en variabel distance, som er lig med forskellen mellem newX og X plus forskellen mellem newY og Y.
-        // Jeg bruger Math.Abs for at sikre at distance er positiv.
-        // Jeg laver en if statement, som tjekker om distance er større end 2. Dette er bare en vilkårlig værdi, som jeg har valgt.
-        // Hvis distance er større end 2, så skriver den en besked til consolen om at creature ikke kan bevæge sig så langt.
-        // Skiftet til Euclidean distance, da det er den mest almindelige formel for distance mellem to punkter i et koordinatsystem.
-        //public void Move(int newX, int newY, World world)
-        //{
-
-        //if (State != CreatureState.IsTurn && State != CreatureState.OutOfCombat)
-        //{
-        //    Console.WriteLine($"{Name} cannot move right now!");
-        //    return;
-        //}
-
-
-        //    int maxDistance = 2; 
-        //    int distance = (int)Math.Sqrt(Math.Pow(newX - X, 2) + Math.Pow(newY - Y, 2));
-
-        //    if (distance > maxDistance)
-        //    {
-        //        Console.WriteLine($"{Name} tried to move too far!");
-        //        return;
-        //    }
-
-        //    if (newX < 0 || newX >= world.MaxX || newY < 0 || newY >= world.MaxY)
-        //    {
-        //        Console.WriteLine($"{Name} tried to move out of bounds!");
-        //        return;
-        //    }
-
-        //    if (world.IsPositionOccupied(newX, newY))
-        //    {
-        //        Console.WriteLine($"{Name} tried to move, but the space is occupied!");
-        //        return;
-        //    }
-
-        //    X = newX;
-        //    Y = newY;
-
-        //    Console.WriteLine($"{Name} has moved to ({X}, {Y})");
-        //    State = CreatureState.HasMoved;
-        //}
-
-
-
-        // Made a weapon checker to see if the creature has any weapons in their inventory
-        // If the creature has no weapons, it will default to a punch attack
-        // The attack method will calculate the distance to the target using Euclidean distance
-        // If the target is out of range, it will print a message to the console
-        // The hit chance is calculated using a random number between 1 and 100
-        // If the hit chance is greater than the weapon's hit chance, it will print a message to the console
-        // The damage is calculated by subtracting the target's defence items from the weapon's damage
-        // If the damage is less than 0, it will default to 0
-        // The target will receive the damage and the console will print a message with the damage dealt and the target's remaining hit points
-        public void Attack(Creature target)
-        {
-            if (State != CreatureState.IsTurn && State != CreatureState.HasMoved)
-            {
-                Console.WriteLine($"{Name} cannot attack right now!");
-                return;
-            }
-
-            // weapon checker logic
-            AttackItem weapon;
-           
-            if (AttackItems.Count > 0)
-            {
-                weapon = AttackItems[0];
-            }
-            else
-            {
-                weapon = new AttackItem("Punch", X, Y, false, false, 1, 40, 1);
-            }
-
-          
-            int distance = (int)Math.Sqrt(Math.Pow(target.X - X, 2) + Math.Pow(target.Y - Y, 2));
-
-            if (distance > weapon.Range)
-            {
-                Console.WriteLine($"{Name} tried to attack {target.Name}, but they are out of range!");
-                return;
-            }
-
-            // Hit Chance logic
-            Random random = new Random();
-            int hitChance = random.Next(1, 100); 
-            if (hitChance > weapon.Hit)
-            {
-                Console.WriteLine($"{Name} tried to attack {target.Name}, but missed!");
-                return;
-            }
-
-            // Damage calculation
-            int damage = weapon.Damage - target.DefenceItems.Sum(d => d.ReduceHitPoint);
-            damage = Math.Max(0, damage);
-            
-            target.ReceiveHit(damage);
-            
-            Console.WriteLine($"{Name} attacked {target.Name} for {damage} damage!");
-            Console.WriteLine($"{target.Name} has {target.HitPoints} HP left!");
-
-            EndTurn();
-        }
-
-
-        public void Defend()
-        {
-            if (State != CreatureState.IsTurn && State != CreatureState.HasMoved)
-            {
-                Console.WriteLine($"{Name} cannot defend right now!");
-                return;
-            }
-
-            Console.WriteLine($"{Name} takes a defensive stance! Damage reduction increased by 50% this turn.");
-
-            foreach (var defenseItem in DefenceItems)
-            {
-                defenseItem.ReduceHitPoint = (int)(defenseItem.ReduceHitPoint * 1.5);
-            }
-
-            EndTurn();
-        }
-
-        */
-
     }
 }

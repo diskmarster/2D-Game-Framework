@@ -16,3 +16,5 @@ C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\MandatoryAdvDemo\obj\Debug\ne
 C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\MandatoryAdvDemo\obj\Debug\net9.0\MandatoryAdvDemo.pdb
 C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\MandatoryAdvDemo\obj\Debug\net9.0\MandatoryAdvDemo.genruntimeconfig.cache
 C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\MandatoryAdvDemo\obj\Debug\net9.0\ref\MandatoryAdvDemo.dll
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\MandatoryAdvDemo\obj\Debug\net9.0\MandatoryAdvDemo.sourcelink.json
+C:\Users\Alex\source\repos\AdvSoftMandatory2DWorld\MandatoryAdvDemo\bin\Debug\net9.0\gameconfig.json

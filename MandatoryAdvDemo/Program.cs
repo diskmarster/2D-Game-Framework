@@ -1,103 +1,147 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using AdvSoftMandatory2DWorld.Classes;
+using AdvSoftMandatory2DWorld.Classes.Interfaces;
 using AdvSoftMandatory2DWorld.Classes.SubCreatures;
+using AdvSoftMandatory2DWorld.Classes.SubWorldObjects;
+using MandatoryAdvDemo;
 
 class Program
 {
+    
     static void Main()
     {
-        World gameWorld = new World(10, 10);
-        TurnManager turnManager = new TurnManager();
+        /// <summary> Demonstration of the game world and its components. And also my testing grounds for new features etc. </summary>
 
-        /* Old test code
-        //Creature player = new Warrior("Hero", 100, 2, 2);
-        //gameWorld.AddCreature(player);
+        // Set up console logging via Trace
+        Trace.Listeners.Clear();
+        Trace.Listeners.Add(new ConsoleTraceListener()); 
 
-        // Tests for moving creature and their limits:
-        // Move within boundaries
-        // player.Move(3, 3, gameWorld); // ✅ Should work
+        // Optional: add file logging
+        Trace.Listeners.Add(new TextWriterTraceListener("logs.txt"));
+        // flush output on app exit
+        AppDomain.CurrentDomain.ProcessExit += (s, e) => Trace.Flush();
 
+        // World setup via CONFIG
+        var config = ConfigLoader.Load("gameconfig.json");
+        Console.WriteLine($"Loaded world size: {config.World.MaxX} x {config.World.MaxY}");
+        Console.WriteLine($"Game Level: {config.GameLevel}");
 
-
-        //player.Move(6, 7, gameWorld); // ❌ Should fail, moving to far
-
-        // Add another creature and try moving into its space
-        //Creature enemy = new Warrior("Enemy", 50, 4, 4);
-        //gameWorld.AddCreature(enemy);
-
-        //player.Move(4, 4, gameWorld); // ❌ Should fail (occupied space)
-
-        // Move outside boundaries
-        //player.Move(5, 5, gameWorld); // ✅ Should work
-        //player.Move(7, 7, gameWorld);
-        //player.Move(6, 6, gameWorld);
-        //player.Move(8, 8, gameWorld);
-        //player.Move(9, 9, gameWorld);
-        //player.Move(11, 11, gameWorld); // ❌ Should fail (out of bounds)
-
-        // Tests for attacking:
-        //player.Attack(enemy); // ✅ Should work
-        //enemy.Attack(player); // ✅ Should work
-        //player.Move(5, 5, gameWorld);
-        //enemy.Move(3, 3, gameWorld);
-        //player.Attack(enemy); // ❌ Should fail (out of range)
-
-        */
+        World gameWorld = new World(10, 5); // fixed size for this battle
 
 
+        static void PrintStats(Creature a, Creature b)
+        {
+            Console.WriteLine($"[HP] {a.Name}: {a.HitPoints} HP\t{b.Name}: {b.HitPoints} HP");
+        }
 
-        // Test if turns work:
+        // MAGE SETUP
+        var mage = new Mage("Gandalf", 50, 9, 2, new DefaultMovementStrategy());
+        mage.AddObserver(new DamageLogger());
+        mage.AddSpell(new CooldownSpell("Fireball", 15, 75, 5, 2)); // + Ice Bolt (always)
+        gameWorld.AddCreature(mage);
 
+        // WARRIOR SETUP
+        AttackItem lootableSword = new AttackItem("Sword", 1, 2, lootable: true, removable: true, damage: 17, hitChance: 70, range: 1);
+        gameWorld.AddObject(lootableSword);
+        var warrior = new Warrior("Conan", 80, 0, 2, new DefaultMovementStrategy());
 
-        // Create creatures
-        Creature player = new Warrior("Hero", 100, 2, 2, new DefaultMovementStrategy());
-        Creature enemy = new Warrior("Enemy", 50, 4, 4, new DefaultMovementStrategy());
+        warrior.AddObserver(new DamageLogger());
+        gameWorld.AddCreature(warrior);
 
-        // Add creatures to the game world
-        gameWorld.AddCreature(player);
-        gameWorld.AddCreature(enemy);
+        Console.WriteLine("\n--- BATTLE BEGINS ---");
 
-        // Add creatures to the turn manager
-        turnManager.AddCreature(player);
-        turnManager.AddCreature(enemy);
+        int turn = 1;
+        while (mage.HitPoints > 0 && warrior.HitPoints > 0)
+        {
+            Console.WriteLine($"\n--- Turn {turn} ---");
 
-        // Test moving within boundaries
-        turnManager.NextTurn();
-        player.Move(3, 3, gameWorld);
-        player.Attack(enemy);  // ✅ Should be allowed after moving
+            // Mage's Turn
+            if (mage.HitPoints > 0)
+            {
+                mage.StartTurn();
 
-        // Test defending
-        turnManager.NextTurn();
-        enemy.Defend();  // ✅ Should be allowed directly
+                // Show cooldowns
+                foreach (var spell in mage.AttackItems.OfType<ICooldownAttackItem>())
+                {
+                    Logger.Log($"{mage.Name}'s {spell.Name} cooldown: {spell.RemainingCooldown} turn(s)");
+                }
 
-        // Test moving and defending
-        turnManager.NextTurn();
-        player.Move(5, 5, gameWorld);
-        player.Defend();  // ✅ Should be allowed after moving
+                if (GetDistance(mage, warrior) <= 5)
+                {
+                    mage.Attack(warrior, gameWorld);
+                }
+                else
+                {
+                    int newX = Math.Max(mage.X - 1, warrior.X + 1);
+                    mage.Move(newX, mage.Y, gameWorld);
+                    mage.EndTurn();
+                }
 
-        // Test attacking
-        turnManager.NextTurn();
-        enemy.Attack(player);  // ✅ Should be allowed directly
+               
+                foreach (var spell in mage.AttackItems.OfType<ICooldownAttackItem>())
+                {
+                    spell.TickCooldown();
+                }
+            }
 
-        // Test attacking directly
-        turnManager.NextTurn();
-        player.Attack(enemy);  // ✅ Should work directly and end turn
+            Thread.Sleep(500);
 
-        // Test moving out of bounds
-        turnManager.NextTurn();
-        player.Move(11, 11, gameWorld);  // ❌ Should fail (out of bounds)
+            // Warrior's Turn
+            if (warrior.HitPoints > 0)
+            {
+                warrior.StartTurn();
 
-        // Test moving to an occupied space
-        turnManager.NextTurn();
-        player.Move(4, 4, gameWorld);  // ❌ Should fail (occupied space)
+                // Try looting if there's a weapon nearby
+                var nearbyWeapon = gameWorld.Objects
+                    .OfType<AttackItem>()
+                    .FirstOrDefault(o => o.Lootable &&
+                                         Math.Abs(o.X - warrior.X) <= 1 &&
+                                         Math.Abs(o.Y - warrior.Y) <= 1);
 
-        // Test moving too far
-        turnManager.NextTurn();
-        player.Move(6, 7, gameWorld);  // ❌ Should fail, moving too far
+                if (nearbyWeapon != null)
+                {
+                    gameWorld.Objects.Remove(nearbyWeapon);
 
-        // Print final stats
-        player.PrintStats();
-        enemy.PrintStats();
+                    var boosted = new BoostedAttackItem(nearbyWeapon);
+                    warrior.AddWeapon(boosted);
+                }
+
+                // If he's now armed and in range, attack!
+                if (warrior.AttackItems.Any() && GetDistance(warrior, mage) <= 1)
+                {
+                    warrior.Attack(mage, gameWorld);
+                }
+                else
+                {
+                    int newX = Math.Min(warrior.X + 1, mage.X - 1);
+                    warrior.Move(newX, warrior.Y, gameWorld);
+                    warrior.EndTurn();
+                }
+            }
+            PrintStats(mage, warrior);
+
+            Thread.Sleep(1000);
+            turn++;
+        }
+
+        Console.WriteLine("\n--- BATTLE OVER ---");
+        if (mage.HitPoints <= 0 && warrior.HitPoints <= 0)
+            Console.WriteLine("It's a draw! Both have fallen.");
+        else if (mage.HitPoints <= 0)
+            Console.WriteLine("🏆 Warrior wins!");
+        else
+            Console.WriteLine("🏆 Mage wins!");
+        
     }
+
+    static int GetDistance(Creature a, Creature b)
+    {
+        return (int)Math.Sqrt(Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2));
+    }
+
+    
+
 }
+

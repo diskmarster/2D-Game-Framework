@@ -11,4 +11,10 @@
 		<ProjectReference Include="..\AdvSoftMandatory2DWorld\AdvSoftMandatory2DWorld.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="gameconfig.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>
