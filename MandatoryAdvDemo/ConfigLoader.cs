@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MandatoryAdvDemo
 {
+    /// <summary> This is the configuration class for the game. It is used to load the game settings from a JSON file. </summary>
     public static class ConfigLoader
     {
     public static GameConfig? Load(string path)

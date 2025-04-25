@@ -16,10 +16,11 @@ class Program
 
         // Set up console logging via Trace
         Trace.Listeners.Clear();
-        Trace.Listeners.Add(new ConsoleTraceListener()); 
+        Trace.Listeners.Add(new ConsoleTraceListener());
 
-        // Optional: add file logging
+        // Testing: add file logging - Used it for debugging. It is located in the root folder of the project..
         Trace.Listeners.Add(new TextWriterTraceListener("logs.txt"));
+
         // flush output on app exit
         AppDomain.CurrentDomain.ProcessExit += (s, e) => Trace.Flush();
 
@@ -28,7 +29,7 @@ class Program
         Console.WriteLine($"Loaded world size: {config.World.MaxX} x {config.World.MaxY}");
         Console.WriteLine($"Game Level: {config.GameLevel}");
 
-        World gameWorld = new World(10, 5); // fixed size for this battle
+        World gameWorld = new World(config.World.MaxX, config.World.MaxY);
 
 
         static void PrintStats(Creature a, Creature b)
@@ -42,6 +43,14 @@ class Program
         mage.AddSpell(new CooldownSpell("Fireball", 15, 75, 5, 2)); // + Ice Bolt (always)
         gameWorld.AddCreature(mage);
 
+
+        // Adding a spell combo(commented out for now) (composite pattern)
+        var combo = new AttackItemComposite("Firestorm");
+        combo.Add(new CooldownSpell("Fireball", 15, 75, 5, 2));
+        combo.Add(new CooldownSpell("Ice Bolt", 3, 100, 3, 1));
+        mage.AddSpell(combo);
+
+
         // WARRIOR SETUP
         AttackItem lootableSword = new AttackItem("Sword", 1, 2, lootable: true, removable: true, damage: 17, hitChance: 70, range: 1);
         gameWorld.AddObject(lootableSword);
@@ -53,16 +62,18 @@ class Program
         Console.WriteLine("\n--- BATTLE BEGINS ---");
 
         int turn = 1;
+
         while (mage.HitPoints > 0 && warrior.HitPoints > 0)
         {
             Console.WriteLine($"\n--- Turn {turn} ---");
 
-            // Mage's Turn
+            /// <summary>Ive made a small simulation to demonstrate the mage doing 3 thing: 1. Checking Cooldowns of spells 2. If the mage is within the range of 5 he can start attacking (casting spells) 
+            /// 3. if not, he will move a step closer on X angle untill he is close enough </summary>
             if (mage.HitPoints > 0)
             {
                 mage.StartTurn();
 
-                // Show cooldowns
+                
                 foreach (var spell in mage.AttackItems.OfType<ICooldownAttackItem>())
                 {
                     Logger.Log($"{mage.Name}'s {spell.Name} cooldown: {spell.RemainingCooldown} turn(s)");
@@ -88,17 +99,20 @@ class Program
 
             Thread.Sleep(500);
 
-            // Warrior's Turn
+            /// <summary >Warrior's Turn - 3 parts: 
+            /// 1. Looting: The warrior checks if there is any loot (oftype "AttackItem") because he is checking for a sword, if there is he will unequip the weapon he has if any, and then apply a boost.
+            /// 2. Attacking: If the warrior is within 1 range of the mage he will perform the Attack() 
+            /// 3. Movign: if not in range for an attack he will take a step closer to mage via the X angle</summary> 
             if (warrior.HitPoints > 0)
             {
                 warrior.StartTurn();
 
-                // Try looting if there's a weapon nearby
+                
                 var nearbyWeapon = gameWorld.Objects
                     .OfType<AttackItem>()
                     .FirstOrDefault(o => o.Lootable &&
-                                         Math.Abs(o.X - warrior.X) <= 1 &&
-                                         Math.Abs(o.Y - warrior.Y) <= 1);
+                       Math.Abs(o.X - warrior.X) <= 1 &&
+                       Math.Abs(o.Y - warrior.Y) <= 1);
 
                 if (nearbyWeapon != null)
                 {
@@ -108,7 +122,7 @@ class Program
                     warrior.AddWeapon(boosted);
                 }
 
-                // If he's now armed and in range, attack!
+                
                 if (warrior.AttackItems.Any() && GetDistance(warrior, mage) <= 1)
                 {
                     warrior.Attack(mage, gameWorld);

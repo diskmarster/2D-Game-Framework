@@ -115,6 +115,7 @@ namespace AdvSoftMandatory2DWorld.Classes
         /// <param name="damage">The base damage before mitigation.</param>
         public virtual void ReceiveHit(int damage)
         {
+            
             int reducedDamage = CalculateReducedDamage(damage);
             HitPoints -= reducedDamage;
 

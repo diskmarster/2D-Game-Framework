@@ -25,7 +25,7 @@ namespace AdvSoftMandatory2DWorld.Classes.SubCreatures
         /// <param name="weapon">The weapon to equip.</param>
         public void AddWeapon(IAttackItem weapon)
         {
-            AttackItems.Clear(); // Only one weapon allowed for now
+            AttackItems.Clear(); // Only one weapon allowed for now - can be changed later
             AttackItems.Add(weapon);
             Logger.Log($"{Name} equips {weapon.Name}.");
         }
@@ -45,6 +45,11 @@ namespace AdvSoftMandatory2DWorld.Classes.SubCreatures
             Logger.Log($"{Name} unequips {weapon.Name}.");
         }
 
+        /// <summary>
+        /// Attempts to loot a nearby object in the world. If the object is an attack item, it replaces the current weapon.
+        /// </summary>
+        /// <param name="world"></param>
+        
         public void TryLootNearby(World world)
         {
             var nearbyLoot = world.Objects.FirstOrDefault(obj =>
@@ -62,7 +67,7 @@ namespace AdvSoftMandatory2DWorld.Classes.SubCreatures
                 Logger.Log($"{Name} has picked up {nearbyLoot.Name} and unequipped the old one.");
             }
 
-            Loot(nearbyLoot);              // Use base class logic
+            Loot(nearbyLoot);              
             world.Objects.Remove(nearbyLoot); // Remove from world
             
         }
@@ -72,6 +77,7 @@ namespace AdvSoftMandatory2DWorld.Classes.SubCreatures
         /// Executes the warrior's attack. If no weapon is equipped, a basic punch is used.
         /// </summary>
         /// <returns>The total damage dealt by the attack.</returns>
+        // Uint 32 bit altid positiv 0 -> 4294967295
         public override int Hit()
         {
             if (AttackItems.Count == 0)
